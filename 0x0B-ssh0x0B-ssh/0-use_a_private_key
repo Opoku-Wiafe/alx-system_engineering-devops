@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# using ssh with single character as flag
+ssh ubuntu -i ~/.ssh/school
