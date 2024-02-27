@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 # using ssh with single character as flag
-ssh -i ~/.ssh/school ubuntu@54.172.47.106
+ssh -i ~/.ssh/school ubuntu@100.25.137.144
