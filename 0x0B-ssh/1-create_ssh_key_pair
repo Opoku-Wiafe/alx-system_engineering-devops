@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# generate rsa key-pair for my server
+ssh-keygen -t rsa -b 4096 -f school -N "betty"
