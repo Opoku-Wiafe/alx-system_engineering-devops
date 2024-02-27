@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 # Check if the apache-access.log file exists
 if [ ! -f "apache-access.log" ]; then
     echo "Error: apache-access.log file not found."
