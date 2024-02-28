@@ -1,21 +1,11 @@
 #!/usr/bin/env bash
-# Install Nginx (if not already installed)
+# Script that configures a new Ubuntu to redirect the server
+
 sudo apt-get update
 sudo apt-get install -y nginx
 
-# Create a custom Nginx config file
-cat <<EOF | sudo tee /etc/nginx/sites-available/redirect_me
-server {
-    listen 80;
-    server_name your_domain.com;
-    location /redirect_me {
-        return 301 https://example.com/new_page;
-    }
-}
-EOF
-# Enable the configuration
-sudo ln -s /etc/nginx/sites-available/redirect_me /etc/nginx/sites-enabled/
-sudo systemctl reload nginx
-# Test the configuration and restart nginx
-sudo nginx -t
-sudo systemctl restart nginx
+echo "Hello World!" | sudo tee /var/www/html/index.html
+string_for_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.optec.tech permanent;"
+sudo sed -i "s/server_name _;/$string_for_replacement/" /etc/nginx/sites-enabled/default
+
+sudo service nginx restart
