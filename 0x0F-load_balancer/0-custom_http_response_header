@@ -9,4 +9,9 @@ sudo sed -i '/^}$/i \ \n\tlocation \/redirect_me {return 301 https:\/\/www.youtu
 sudo sed -i '/^}$/i \ \n\tlocation @404 {return 404 "Ceci n'\''est pas une page\\n";}' $config
 sudo sed -i 's/=404/@404/g' $config
 sudo sed -i "0,/location \/ {/s/location \/ {/&\n\t\tadd_header X-Served-By '$HOSTNAME';/" $config
+
+# test your syntax
+sudo nginx -t
+
+# restart nginx
 sudo service nginx restart
