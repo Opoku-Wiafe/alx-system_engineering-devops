@@ -1,23 +1,17 @@
 #!/usr/bin/env bash
 # Install Nginx (if not already installed)
-package { 'nginx':
+exec {'update':
+  command => '/usr/bin/apt-get update',
+}
+-> package { 'nginx':
   ensure => installed,
 }
-
-# Config Nginx
-class { 'nginx':
-  # Your Nginx configuration settings go here
+-> file_line { 'header_served_by':
+  path  => '/etc/nginx/sites-available/default',
+  match => '^server {',
+  line  => "server {\n\tadd_header X-Served-By \"${hostname}\";",
+  multiple => false,
 }
-
-# Add custom HTTP header
-file { '/etc/nginx/conf.d/custom_headers.conf':
-  ensure  => present,
-  content => "add_header X-Served-By $::hostname;",
-  notify  => Service['nginx'],
-}
-
-# Restart Nginx
-service { 'nginx':
-  ensure => running,
-  enable => true,
+-> exec {'run':
+  command => '/usr/sbin/service nginx restart',
 }
