@@ -22,6 +22,8 @@ backend opoku-wiafe_backend
 	server 317167-web-02 3.86.7.195:80 check
 "
 echo "$server_config" | sudo tee -a /etc/haproxy/haproxy.cfg
+# Testing the HAproxy configuration file
+sudo haproxy -c -f /etc/haproxy/haproxy.cfg
 
 # Enable and start happroxy service
 echo "ENABLED=1" | sudo tee -a /etc/default/haproxy
