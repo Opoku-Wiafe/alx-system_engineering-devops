@@ -2,10 +2,10 @@
 # run the same command to nginx but this time shorter
 
 # Configure Nginx to run as nginx user
-sed -i 's/user www-data;/user nginx;/g' /etc/nginx/nginx.conf
-
+sed -i 's/user www-data/user nginx/g' /etc/nginx/nginx.conf
+chmod 644 /etc/nginx/nginx.conf
 # Configure Nginx to listen on all active IPs on port 8080
-sed -i 's/listen 80;/listen 8080;/g' /etc/nginx/sites-available/default
-
+sed -i 's/80/8080/g' /etc/nginx/sites-available/default
+pkill apache2
 # Restart Nginx
-service nginx restart
+sudo -u nginx service nginx restart
