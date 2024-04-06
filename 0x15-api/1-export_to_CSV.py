@@ -1,7 +1,11 @@
 #!/usr/bin/python3
+"""
+A module that export python script into csv data
+"""
 import csv
 import requests
 import sys
+
 
 if len(sys.argv) > 1:
     user_id = sys.argv[1]
