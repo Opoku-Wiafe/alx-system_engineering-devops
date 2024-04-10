@@ -1,6 +1,9 @@
 #!/usr/bin/python3
-import requests
 """Module to query the Reddit API and return the number of subscribers"""
+
+import requests
+
+headers = {"User-Agent": "MyCustomUserAgent/1.0"}
 
 
 def recurse(subreddit, hot_list=[], after=None):
