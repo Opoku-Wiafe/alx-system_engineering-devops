@@ -5,6 +5,8 @@ import requests
 import re
 from collections import Counter
 
+headers = {"User-Agent": "MyCustomUserAgent/1.0"}
+
 
 def count_words(subreddit, word_list, counts=None, after=None):
     """occurrences of words in the titles of hot posts from a subreddit."""
